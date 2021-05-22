@@ -27,7 +27,7 @@ PostSchema.pre("remove", function () {
   if (process.env.STORAGE_TYPE === "s3") {
     return s3
       .deleteObject({
-        Bucket: process.env.BUCKET_NAME,
+        Bucket: "mayshara-upload",
         Key: this.key
       })
       .promise()

@@ -23,8 +23,12 @@ const storageTypes = {
     }
   }),
   s3: multerS3({
-    s3: new aws.S3(),
-    bucket: process.env.BUCKET_NAME,
+    s3: new aws.S3({
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACESS_KEY,
+      region: process.env.AWS_DEFAULT_REGION
+    }),
+    bucket: "mayshara-upload",
     contentType: multerS3.AUTO_CONTENT_TYPE,
     acl: "public-read",
     key: (req, file, cb) => {
