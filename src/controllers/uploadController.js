@@ -25,7 +25,7 @@ router.post('/posts', multer(multerCongig).single('file'), async (req, res) => {
 });
 
 
-router.delete('/posts:id', async (req, res) => {
+router.delete('/posts/:id', async (req, res) => {
   const post = await Post.findById(req.params.id);
 
   await post.remove();
